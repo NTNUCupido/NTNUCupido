@@ -316,10 +316,14 @@ def verify_school_mail_process(register_sheet_setting, verify_sheet_setting, smt
         except:
             sleep(5)
             continue
-
+        
         if datas != []:
             for data in datas:
                 row_id, mail = data
+                if "@gapps.ntnu.edu.tw" not in mail: #不是ntnu mail不送驗證信
+                    checked_mail(register_sheet_id, register_table,
+                                 register_checked_col, register_row_id_offset, row_id, mail)
+                    continue
                 verify_code = gen_verify_code(mail)
                 status = send_verify_mail(smtp_data, mail, verify_code, verify_form_id)
                 if status == {}:
