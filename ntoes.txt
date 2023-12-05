@@ -1,0 +1,9 @@
+count down gif generator:
+https://emailtaco.com/countdown-timer
+https://emailtaco.com/1673175360000.gif
+
+
+
+filename = "example.jpg"
+image = base64.b64encode(open(filename, "rb").read())
+<img src= "data:image/jpg;base64,{image_base64}">
